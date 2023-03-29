@@ -52,9 +52,11 @@ document.querySelector("#slider").addEventListener("change", function() {
 	let volume = document.querySelector("#slider").value;
 	console.log("The current value is " + volume / 100);
 	document.querySelector('#volume').innerHTML = volume + '%';
-	// let divList = document.querySelectorAll('div');
+	let divList = document.querySelectorAll('div');
+	console.log(divList[1].querySelector('span'));
 	
-	console.log(document.querySelector('div').querySelector('span').innerHTML);
+	// console.log(document.querySelector('div:nth-child(2)').innerHTML);
+	// console.log(document.documentElement('div').innerHTML);
 });
 document.querySelector("#vintage").addEventListener("click", function() {
 	video.classList.add('oldSchool');
