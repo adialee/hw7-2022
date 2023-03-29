@@ -48,11 +48,10 @@ document.querySelector("#mute").addEventListener("click", function() {
 		console.log('Mute');
 	}
 });
-document.querySelector("#slider").addEventListener("change", function() {
-	let volume = parseInt(document.getElementById('slider').value);
-	console.log(`The current value is ${volume / 100}`);
+document.querySelector("#slider").addEventListener("input", function() {
+	let volume = Number(document.getElementById('slider').value);
+	console.log('The current value is', volume / 100);
 	document.querySelector('#volume').innerHTML = volume + '%';
-
 	let divList = document.querySelectorAll('div');
 	console.log(divList[1].querySelector('span'));
 });
