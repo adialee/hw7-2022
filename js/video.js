@@ -1,5 +1,5 @@
 var video = document.querySelector(".video");
-let volume = Number(document.getElementById('slider').value);
+let volume = Number(document.getElementById('slider').value) / 100;
 
 window.addEventListener("load", function() {
 	console.log("Good job opening the window");
@@ -12,7 +12,8 @@ document.querySelector("#play").addEventListener("click", function() {
 	console.log("Play Video");
 	video.play();
 	// let volume = document.querySelector("#slider").value;
-	document.querySelector('#volume').innerHTML = volume + '%'; 
+	video.volume = volume;
+	document.querySelector('#volume').innerHTML = volume * 100 + '%'; 
 });
 document.querySelector("#pause").addEventListener("click", function() {
 	console.log("Pause Video");
@@ -50,11 +51,11 @@ document.querySelector("#mute").addEventListener("click", function() {
 	}
 });
 document.querySelector("#slider").addEventListener("change", function() {
-	console.log("The current value is", volume / 100);
-
-	let newVol = Number(document.getElementById("slider").value);
-	console.log('The current value is', newVol / 100);
-	document.getElementById("volume").innerHTML = newVol + '%';
+	let newVol = Number(document.getElementById("slider").value / 100);
+	video.volume = newVol;
+	console.log("The current value is", volume);
+	console.log('The current value is', newVol);
+	document.getElementById("volume").innerHTML = newVol * 100 + '%';
 	volume = newVol;
 
 	let divList = document.querySelectorAll("div");
