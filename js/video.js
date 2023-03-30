@@ -1,4 +1,5 @@
 var video = document.querySelector(".video");
+let volume = Number(document.getElementById('slider').value);
 
 window.addEventListener("load", function() {
 	console.log("Good job opening the window");
@@ -10,7 +11,7 @@ window.addEventListener("load", function() {
 document.querySelector("#play").addEventListener("click", function() {
 	console.log("Play Video");
 	video.play();
-	let volume = document.querySelector("#slider").value;
+	// let volume = document.querySelector("#slider").value;
 	document.querySelector('#volume').innerHTML = volume + '%'; 
 });
 document.querySelector("#pause").addEventListener("click", function() {
@@ -48,12 +49,16 @@ document.querySelector("#mute").addEventListener("click", function() {
 		console.log('Mute');
 	}
 });
-document.querySelector("#slider").addEventListener("input", function() {
-	let volume = Number(document.getElementById('slider').value);
-	console.log('The current value is', volume / 100);
-	document.querySelector('#volume').innerHTML = volume + '%';
-	let divList = document.querySelectorAll('div');
-	console.log(divList[1].querySelector('span'));
+document.querySelector("#slider").addEventListener("change", function() {
+	console.log("The current value is", volume / 100);
+
+	let newVol = Number(document.getElementById("slider").value);
+	console.log('The current value is', newVol / 100);
+	document.getElementById("volume").innerHTML = newVol + '%';
+	volume = newVol;
+
+	let divList = document.querySelectorAll("div");
+	console.log(divList[1].querySelector("span"));
 });
 document.querySelector("#vintage").addEventListener("click", function() {
 	video.classList.add('oldSchool');
